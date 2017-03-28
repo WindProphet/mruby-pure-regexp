@@ -31,6 +31,10 @@ class String
     end
   end
 
+  def =~(regex)
+    regex =~ self
+  end
+
   def gsub(*args, &block)
     if args[0].is_a? Regexp
       raise ArgumentError.new("wrong number of arguments") unless args.size == 2

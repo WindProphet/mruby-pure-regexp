@@ -38,12 +38,15 @@ class PureRegexp
     @option & IGNORECASE == IGNORECASE
   end
 
+  $matchdata = []
+
   def match(str, pos = 0)
     input = Input.new(str, @option).substr(pos)
     m = @root.match(input)
     if block_given?
       yield(m)
     end
+    $matchdata = m || []
     m
   end
 
